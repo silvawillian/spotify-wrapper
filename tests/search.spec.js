@@ -1,9 +1,8 @@
-/* eslint-disable */
-
 const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 const sinonStubPromise = require('sinon-stub-promise');
+
 global.fetch = require('node-fetch');
 
 const { expect } = chai;
@@ -13,7 +12,7 @@ const {
   searchArtists,
   searchTracks,
   searchPlaylists,
-} = require('../src/main');
+} = require('../src/search');
 
 chai.use(sinonChai);
 sinonStubPromise(sinon);

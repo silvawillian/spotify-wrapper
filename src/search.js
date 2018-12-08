@@ -1,13 +1,19 @@
 require('dotenv').load();
+
 global.fetch = require('node-fetch');
 
+const {
+  SPOTIFY_API_URL,
+  SPOTIFY_BEARER_TOKEN,
+} = process.env;
+
 const headers = {
-  Authorization: `Bearer ${process.env.SPOTIFY_BEARER_TOKEN}`,
+  Authorization: `Bearer ${SPOTIFY_BEARER_TOKEN}`,
 };
 
 const search = async (query, type) =>
   global.fetch(
-    `https://api.spotify.com/v1/search?q=${query}&type=${type}`,
+    `${SPOTIFY_API_URL}/search?q=${query}&type=${type}`,
     { headers },
   );
 
