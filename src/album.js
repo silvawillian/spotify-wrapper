@@ -2,9 +2,12 @@ require('dotenv').load();
 global.fetch = require('node-fetch');
 
 const {
-  SPOTIFY_API_URL,
   SPOTIFY_BEARER_TOKEN,
 } = process.env;
+
+const {
+  SPOTIFY_API_URL,
+} = require('../config');
 
 const headers = {
   Authorization: `Bearer ${SPOTIFY_BEARER_TOKEN}`,
