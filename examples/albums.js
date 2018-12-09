@@ -1,4 +1,4 @@
-const { searchAlbums } = require('../src/main');
+const { searchAlbums } = require('../src/search');
 
 searchAlbums('Aerosmith')
   .then(res => res.json())

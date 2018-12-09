@@ -3,5 +3,27 @@
   <title>Spotify Wrapper HTML</title>
 </head>
 <body>
-  <script src="../dist/spotify-wrapper.umd.min.js"></script>
+  <div id="albums"></div>
+
+  <script src="../dist/spotify-wrapper.umd.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const artist = urlParams.get('artist');
+
+    const albums = spotifyWrapper.searchAlbums('Muse' && artist);
+    const albumsEl = document.getElementById("albums");
+    let markup;
+
+    albums
+      .then(data => {
+        markup = data.albums.items.map(item =>
+          `<img src='${item.images[0].url}' alt='${item.name}' />`
+        ).join('');
+
+        console.log(markup);
+
+        albumsEl.innerHTML = markup;
+      })
+      .catch(err => console.log(err));
+  </script>
 </body>
